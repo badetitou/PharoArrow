@@ -18,6 +18,24 @@ PharoArrowLibrary >> garrow_field_new: name dataType: data_type [
 ]
 
 { #category : 'builder' }
+PharoArrowLibrary >> garrow_float_array_builder: builder _append_value: value error: error [
+
+	^ self ffiCall: 'Boolean garrow_float_array_builder_append_value( void * builder, float value, void * error)'
+]
+
+{ #category : 'builder' }
+PharoArrowLibrary >> garrow_float_array_builder_new [
+
+	^ self ffiCall: 'void * garrow_float_array_builder_new()'
+]
+
+{ #category : 'datatype' }
+PharoArrowLibrary >> garrow_float_data_type_new [
+
+	^ self ffiCall: 'void * garrow_float_data_type_new()'
+]
+
+{ #category : 'builder' }
 PharoArrowLibrary >> garrow_int32_array_builder: builder _append_value: value error: error [
 
 	^ self ffiCall: 'Boolean garrow_int32_array_builder_append_value( void * builder, int value, void * error)'
