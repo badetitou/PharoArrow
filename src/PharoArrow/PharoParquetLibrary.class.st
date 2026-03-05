@@ -1,8 +1,9 @@
 Class {
 	#name : 'PharoParquetLibrary',
 	#superclass : 'FFILibrary',
-	#category : 'PharoArrow',
-	#package : 'PharoArrow'
+	#category : 'PharoArrow-Library',
+	#package : 'PharoArrow',
+	#tag : 'Library'
 }
 
 { #category : 'accessing - platform' }

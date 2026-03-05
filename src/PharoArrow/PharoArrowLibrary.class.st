@@ -1,8 +1,9 @@
 Class {
 	#name : 'PharoArrowLibrary',
 	#superclass : 'FFILibrary',
-	#category : 'PharoArrow',
-	#package : 'PharoArrow'
+	#category : 'PharoArrow-Library',
+	#package : 'PharoArrow',
+	#tag : 'Library'
 }
 
 { #category : 'builder add' }
@@ -11,16 +12,45 @@ PharoArrowLibrary >> garrow_array_builder_append_null: anyBuilder error: errorPt
 	^ self ffiCall: 'int garrow_array_builder_append_null (void* anyBuilder, void* errorPtrOrNull)'
 ]
 
-{ #category : 'builder' }
+{ #category : 'builder - finish extended' }
 PharoArrowLibrary >> garrow_array_builder_finish: builder error: errorPtrOrNull [
 
-	^ self ffiCall: 'void* garrow_array_builder_finish (void* builder, void* errorPtrOrNull)'
+	^ self ffiCall:
+		  'GArrowArray * garrow_array_builder_finish (void* builder, void* errorPtrOrNull)'
+]
+
+{ #category : 'builder - finish extended' }
+PharoArrowLibrary >> garrow_array_float_builder_finish: builder error: errorPtrOrNull [
+
+	^ self ffiCall:
+		  'GArrowFloatArray * garrow_array_builder_finish (void* builder, void* errorPtrOrNull)'
+]
+
+{ #category : 'builder - finish extended' }
+PharoArrowLibrary >> garrow_array_int32_builder_finish: builder error: errorPtrOrNull [
+
+	^ self ffiCall:
+		  'GArrowInt32Array * garrow_array_builder_finish (void* builder, void* errorPtrOrNull)'
+]
+
+{ #category : 'builder - finish extended' }
+PharoArrowLibrary >> garrow_array_int64_builder_finish: builder error: errorPtrOrNull [
+
+	^ self ffiCall:
+		  'GArrowInt64Array * garrow_array_builder_finish (void* builder, void* errorPtrOrNull)'
+]
+
+{ #category : 'builder - finish extended' }
+PharoArrowLibrary >> garrow_array_string_builder_finish: builder error: errorPtrOrNull [
+
+	^ self ffiCall:
+		  'GArrowStringArray * garrow_array_builder_finish (void* builder, void* errorPtrOrNull)'
 ]
 
 { #category : 'field' }
 PharoArrowLibrary >> garrow_field_new: name dataType: data_type [
 
-	^ self ffiCall: 'void* garrow_field_new (char* name, void* data_type)'
+	^ self ffiCall: 'GArrowField * garrow_field_new (char* name, void* data_type)'
 ]
 
 { #category : 'builder add' }
@@ -32,7 +62,7 @@ PharoArrowLibrary >> garrow_float_array_builder: builder _append_value: value er
 { #category : 'builder' }
 PharoArrowLibrary >> garrow_float_array_builder_new [
 
-	^ self ffiCall: 'void * garrow_float_array_builder_new()'
+	^ self ffiCall: 'GArrowFloatArrayBuilder * garrow_float_array_builder_new()'
 ]
 
 { #category : 'datatype' }
@@ -50,7 +80,7 @@ PharoArrowLibrary >> garrow_int32_array_builder: builder _append_value: value er
 { #category : 'builder' }
 PharoArrowLibrary >> garrow_int32_array_builder_new [
 
-	^ self ffiCall: 'void * garrow_int32_array_builder_new()'
+	^ self ffiCall: 'GArrowInt32ArrayBuilder * garrow_int32_array_builder_new()'
 ]
 
 { #category : 'builder add' }
@@ -62,7 +92,7 @@ PharoArrowLibrary >> garrow_int64_array_builder: builder _append_value: value er
 { #category : 'builder' }
 PharoArrowLibrary >> garrow_int64_array_builder_new [
 
-	^ self ffiCall: 'void * garrow_int64_array_builder_new()'
+	^ self ffiCall: 'GArrowInt64ArrayBuilder * garrow_int64_array_builder_new()'
 ]
 
 { #category : 'datatype' }
@@ -98,7 +128,7 @@ PharoArrowLibrary >> garrow_list_data_type_new: valueField [
 { #category : 'field' }
 PharoArrowLibrary >> garrow_schema_new: fields [
 
-	^ self ffiCall: 'void* garrow_schema_new (void* fields)'
+	^ self ffiCall: 'GArrowSchema * garrow_schema_new (void* fields)'
 ]
 
 { #category : 'builder add' }
@@ -110,7 +140,7 @@ PharoArrowLibrary >> garrow_string_array_builder: builder _append_string: value 
 { #category : 'builder' }
 PharoArrowLibrary >> garrow_string_array_builder_new [
 
-	^ self ffiCall: 'void * garrow_string_array_builder_new()'
+	^ self ffiCall: 'GArrowStringArrayBuilder * garrow_string_array_builder_new()'
 ]
 
 { #category : 'datatype' }
@@ -122,7 +152,7 @@ PharoArrowLibrary >> garrow_string_data_type_new [
 { #category : 'table' }
 PharoArrowLibrary >> garrow_table_new_values: schema values: values error: errorOrNil [
 
-	^ self ffiCall: 'void* garrow_table_new_values (void* schema, void* values, void* errorOrNil)'
+	^ self ffiCall: 'GArrowTable * garrow_table_new_values (GArrowSchema * schema, void* values, void* errorOrNil)'
 ]
 
 { #category : 'accessing - platform' }
