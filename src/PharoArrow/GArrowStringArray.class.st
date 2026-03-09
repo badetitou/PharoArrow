@@ -11,6 +11,6 @@ GArrowStringArray >> at: index [
 
 	^ self
 		  ffiCall:
-		  'int64 garrow_string_array_get_value(GArrowStringArray * self, int index)'
+		  'String garrow_string_array_get_string(GArrowStringArray * self, int index)'
 		  library: PharoArrowLibrary uniqueInstance
 ]
