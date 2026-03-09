@@ -6,6 +6,17 @@ Class {
 }
 
 { #category : 'examples' }
+PharoArrowExample >> readFile [
+
+	<example>
+	| reader table |
+	reader := GParquetArrowFileReader
+		          on: '/Users/benoit.verhaeghe/Documents/entities.parquet'
+		          error: nil.
+	table := reader readTableWithError: nil
+]
+
+{ #category : 'examples' }
 PharoArrowExample >> superSimpleExample [
 
 	<example>

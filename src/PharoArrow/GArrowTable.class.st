@@ -7,6 +7,24 @@ Class {
 }
 
 { #category : 'accessing' }
+GArrowTable >> column: index [
+
+	^ self
+		  ffiCall:
+		  'GArrowChunkedArray * garrow_table_get_column_data (void * self, int index)'
+		  library: PharoArrowLibrary uniqueInstance
+]
+
+{ #category : 'accessing' }
+GArrowTable >> dataOfColumns: index [
+
+	^ self
+		  ffiCall:
+		  'GArrowChunkedArray * garrow_table_get_column_data(GArrowTable *self, int index)'
+		  library: PharoArrowLibrary uniqueInstance
+]
+
+{ #category : 'accessing' }
 GArrowTable >> numberOfColumns [
 
 	^ self

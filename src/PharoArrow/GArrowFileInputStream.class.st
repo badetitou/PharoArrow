@@ -15,3 +15,21 @@ GArrowFileInputStream class >> on: pathString withError: error [
 		  'GArrowFileInputStream * garrow_file_input_stream_new(String pathString, void *error)'
 		  library: PharoArrowLibrary uniqueInstance
 ]
+
+{ #category : 'as yet unclassified' }
+GArrowFileInputStream >> fileDescriptor [
+
+	^ self
+		  ffiCall:
+		  'int garrow_file_input_stream_get_file_descriptor(GArrowFileInputStream * self)'
+		  library: PharoArrowLibrary uniqueInstance
+]
+
+{ #category : 'as yet unclassified' }
+GArrowFileInputStream >> size: error [
+
+	^ self
+		  ffiCall:
+		  'int64 garrow_seekable_input_stream_get_size(GArrowSeekableInputStream * self, void *error)'
+		  library: PharoArrowLibrary uniqueInstance
+]
