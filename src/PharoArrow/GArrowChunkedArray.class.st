@@ -6,7 +6,26 @@ Class {
 	#tag : 'Arrow'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'acccessing' }
+GArrowChunkedArray >> chunk: chunkIndex [
+	
+
+	^ self
+		  chunk:
+		  chunkIndex
+		  as: (GArrowArray typeFor: self dataType)
+]
+
+{ #category : 'private' }
+GArrowChunkedArray >> chunk: chunkIndex as: className [
+
+	^ self
+		  ffiCall:
+		  className name, ' * garrow_chunked_array_get_chunk(GArrowChunkedArray * self, int chunkIndex)'
+		  library: PharoArrowLibrary uniqueInstance
+]
+
+{ #category : 'acccessing' }
 GArrowChunkedArray >> dataType [
 
 	^ self
@@ -15,7 +34,16 @@ GArrowChunkedArray >> dataType [
 		  library: PharoArrowLibrary uniqueInstance
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'acccessing' }
+GArrowChunkedArray >> numberOfChunks [
+
+	^ self
+		  ffiCall:
+		  'int garrow_chunked_array_get_n_chunks(GArrowChunkedArray * self)'
+		  library: PharoArrowLibrary uniqueInstance
+]
+
+{ #category : 'acccessing' }
 GArrowChunkedArray >> numberOfRows [
 
 	^ self

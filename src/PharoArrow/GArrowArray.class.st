@@ -6,6 +6,17 @@ Class {
 	#tag : 'Arrow'
 }
 
+{ #category : 'as yet unclassified' }
+GArrowArray class >> typeFor: aTypeString [
+
+	name := aTypeString name.
+	name = 'int64' ifTrue: [ ^ GArrowInt64Array ].
+	name = 'int32' ifTrue: [ ^ GArrowInt32Array ].
+	name = 'utf8' ifTrue: [ ^ GArrowStringArray ].
+	name = 'float' ifTrue: [ ^ GArrowFloatArray ].
+	^ self
+]
+
 { #category : 'accessing' }
 GArrowArray >> at: index [
 
