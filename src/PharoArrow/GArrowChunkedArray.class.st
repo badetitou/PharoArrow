@@ -6,15 +6,26 @@ Class {
 	#tag : 'Arrow'
 }
 
-{ #category : 'acccessing' }
+{ #category : 'private' }
+GArrowChunkedArray >> booleanChunk: chunkIndex [
+
+	^ self
+		  ffiCall:
+		  'GArrowBooleanArray * garrow_chunked_array_get_chunk(GArrowChunkedArray * self, int chunkIndex)'
+		  library: PharoArrowLibrary uniqueInstance
+]
+
+{ #category : 'accessing' }
 GArrowChunkedArray >> chunk: chunkIndex [
 
 	| name |
 	name := self dataType name.
 	name = 'int64' ifTrue: [ ^ self int64Chunk: chunkIndex ].
 	name = 'int32' ifTrue: [ ^ self int32Chunk: chunkIndex ].
+	name = 'int8' ifTrue: [ ^ self int8Chunk: chunkIndex ].
 	name = 'utf8' ifTrue: [ ^ self stringChunk: chunkIndex ].
 	name = 'float' ifTrue: [ ^ self floatChunk: chunkIndex ].
+	name = 'bool' ifTrue: [ ^ self booleanChunk: chunkIndex ].
 	^ self rawChunk: chunkIndex
 ]
 
@@ -51,6 +62,15 @@ GArrowChunkedArray >> int64Chunk: chunkIndex [
 	^ self
 		  ffiCall:
 		  'GArrowInt64Array * garrow_chunked_array_get_chunk(GArrowChunkedArray * self, int chunkIndex)'
+		  library: PharoArrowLibrary uniqueInstance
+]
+
+{ #category : 'private' }
+GArrowChunkedArray >> int8Chunk: chunkIndex [
+
+	^ self
+		  ffiCall:
+		  'GArrowInt8Array * garrow_chunked_array_get_chunk(GArrowChunkedArray * self, int chunkIndex)'
 		  library: PharoArrowLibrary uniqueInstance
 ]
 
