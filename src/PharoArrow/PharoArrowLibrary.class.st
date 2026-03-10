@@ -73,6 +73,12 @@ PharoArrowLibrary >> garrow_boolean_array_builder_new [
 	^ self ffiCall: 'GArrowBooleanArrayBuilder * garrow_boolean_array_builder_new()'
 ]
 
+{ #category : 'datatype' }
+PharoArrowLibrary >> garrow_boolean_data_type_new [
+
+	^ self ffiCall: 'void * garrow_boolean_data_type_new()'
+]
+
 { #category : 'field' }
 PharoArrowLibrary >> garrow_field_new: name dataType: data_type [
 
