@@ -64,7 +64,7 @@ PharoArrowLibrary >> garrow_array_string_builder_finish: builder error: errorPtr
 { #category : 'builder add' }
 PharoArrowLibrary >> garrow_boolean_array_builder: builder _append_value: value error: error [
 
-	^ self ffiCall: 'Boolean garrow_boolean_array_builder_append_value( void * builder, boolean value, void * error)'
+	^ self ffiCall: 'Boolean garrow_boolean_array_builder_append_value( void * builder, bool value, void * error)'
 ]
 
 { #category : 'builder' }
