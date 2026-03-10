@@ -9,7 +9,7 @@ Class {
 { #category : 'accessing - platform' }
 PharoGLibLibrary >> g_list_append: list with: data [
 
-	^ self ffiCall: 'void* g_list_append (void* list, void* data)'
+	^ self ffiCall: 'GList * g_list_append (void* list, void* data)'
 ]
 
 { #category : 'accessing - platform' }

@@ -25,6 +25,21 @@ GArrowArrayBuilder >> append: aValue error: errorOrNil [
 ]
 
 { #category : 'accessing' }
+GArrowArrayBuilder >> appendNull [
+
+	^ self appendNull: nil
+]
+
+{ #category : 'accessing' }
+GArrowArrayBuilder >> appendNull: error [
+
+	^ self
+		  ffiCall:
+		  'Boolean garrow_array_builder_append_null(GArrowArrayBuilder * self, void * error)'
+		  library: PharoArrowLibrary uniqueInstance
+]
+
+{ #category : 'accessing' }
 GArrowArrayBuilder >> finish [
 
 	^ PharoArrowLibrary uniqueInstance

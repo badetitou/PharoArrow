@@ -6,6 +6,13 @@ Class {
 	#tag : 'Library'
 }
 
+{ #category : 'builder - finish extended' }
+PharoArrowLibrary >> garrow_array_boolean_builder_finish: builder error: errorPtrOrNull [
+
+	^ self ffiCall:
+		  'GArrowBooleanArray * garrow_array_builder_finish (void* builder, void* errorPtrOrNull)'
+]
+
 { #category : 'builder add' }
 PharoArrowLibrary >> garrow_array_builder_append_null: anyBuilder error: errorPtrOrNull [
 
@@ -41,10 +48,29 @@ PharoArrowLibrary >> garrow_array_int64_builder_finish: builder error: errorPtrO
 ]
 
 { #category : 'builder - finish extended' }
+PharoArrowLibrary >> garrow_array_int8_builder_finish: builder error: errorPtrOrNull [
+
+	^ self ffiCall:
+		  'GArrowInt8Array * garrow_array_builder_finish (void* builder, void* errorPtrOrNull)'
+]
+
+{ #category : 'builder - finish extended' }
 PharoArrowLibrary >> garrow_array_string_builder_finish: builder error: errorPtrOrNull [
 
 	^ self ffiCall:
 		  'GArrowStringArray * garrow_array_builder_finish (void* builder, void* errorPtrOrNull)'
+]
+
+{ #category : 'builder add' }
+PharoArrowLibrary >> garrow_boolean_array_builder: builder _append_value: value error: error [
+
+	^ self ffiCall: 'Boolean garrow_boolean_array_builder_append_value( void * builder, boolean value, void * error)'
+]
+
+{ #category : 'builder' }
+PharoArrowLibrary >> garrow_boolean_array_builder_new [
+
+	^ self ffiCall: 'GArrowBooleanArrayBuilder * garrow_boolean_array_builder_new()'
 ]
 
 { #category : 'field' }
@@ -99,6 +125,24 @@ PharoArrowLibrary >> garrow_int64_array_builder_new [
 PharoArrowLibrary >> garrow_int64_data_type_new [
 
 	^ self ffiCall: 'void * garrow_int64_data_type_new()'
+]
+
+{ #category : 'builder add' }
+PharoArrowLibrary >> garrow_int8_array_builder: builder _append_value: value error: error [
+
+	^ self ffiCall: 'Boolean garrow_int8_array_builder_append_value( void * builder, int value, void * error)'
+]
+
+{ #category : 'builder' }
+PharoArrowLibrary >> garrow_int8_array_builder_new [
+
+	^ self ffiCall: 'GArrowInt8ArrayBuilder * garrow_int8_array_builder_new()'
+]
+
+{ #category : 'datatype' }
+PharoArrowLibrary >> garrow_int8_data_type_new [
+
+	^ self ffiCall: 'void * garrow_int8_data_type_new()'
 ]
 
 { #category : 'builder add' }
