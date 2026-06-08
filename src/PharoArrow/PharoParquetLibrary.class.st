@@ -41,3 +41,9 @@ PharoParquetLibrary >> macLibraryName [
 	^ FFIMacLibraryFinder findAnyLibrary:
 		  #( 'libparquet-glib.dylib' )
 ]
+
+{ #category : 'accessing - platform' }
+PharoParquetLibrary >> unixLibraryName [
+
+	^'libparquet-glib'
+]
