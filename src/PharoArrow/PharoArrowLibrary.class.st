@@ -250,3 +250,9 @@ PharoArrowLibrary >> macLibraryName [
 	^ FFIMacLibraryFinder findAnyLibrary:
 		  #( 'libarrow-glib.dylib' )
 ]
+
+{ #category : 'accessing - platform' }
+PharoArrowLibrary >> unixLibraryName [
+
+	^'libarrow-glib'
+]

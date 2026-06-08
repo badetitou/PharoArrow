@@ -44,3 +44,9 @@ PharoGLibLibrary >> macLibraryName [
 	^ FFIMacLibraryFinder findAnyLibrary:
 		  #( 'libglib-2.0.0.dylib' )
 ]
+
+{ #category : 'accessing - platform' }
+PharoGLibLibrary >> unixLibraryName [
+
+	^'libglib-2.0'
+]
